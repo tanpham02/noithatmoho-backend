@@ -46,6 +46,9 @@ public class UsersService implements UsersServiceInterface{
 		updateUser.setVouchers(user.getVouchers());
 		updateUser.setCheckout(user.getCheckout());
 		updateUser.setAvatar(user.getAvatar());
+		updateUser.setProduct_boughts(user.getProduct_boughts());
+		updateUser.setTotal_order(user.getTotal_order());
+		updateUser.setTransactions(user.getTransactions());
 		return userRepository.save(updateUser);
 	}
 
