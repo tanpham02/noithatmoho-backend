@@ -1,5 +1,5 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:18-jdk-alpine
 VOLUME /tmp
-ADD target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ADD target/noithatmoho-backend.jar app.jar
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar"]
 EXPOSE 9080
