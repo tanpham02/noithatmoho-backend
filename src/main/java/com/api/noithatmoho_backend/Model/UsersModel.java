@@ -50,6 +50,7 @@ public class UsersModel {
 		this.transactions = transactions;
 	}
 
+
 	public int getId() {
 		return id;
 	}
