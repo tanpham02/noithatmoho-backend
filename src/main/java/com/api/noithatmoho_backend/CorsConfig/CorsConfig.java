@@ -13,7 +13,7 @@ public class CorsConfig {
 	         @Override
 	         public void addCorsMappings(CorsRegistry registry) {
 	            registry.addMapping("/**")
-	               .allowedOrigins("http://localhost:3000")
+	               .allowedOrigins("https://noithatmoho-frontend-krnrtb1z0-phamvantan1311-gmailcom.vercel.app/")
 	               .allowedMethods("GET", "POST", "PUT", "DELETE")
 	               .allowCredentials(true);
 	         }
