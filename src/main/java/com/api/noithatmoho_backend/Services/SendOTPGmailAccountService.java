@@ -7,26 +7,15 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.api.noithatmoho_backend.Repository.RestoreByMailRepository;
 
 @Service
-public class SendOTPGmailRestoreAccountService {
-	@Value("${spring.mail.host}")
-	private String springMailHost;
+public class SendOTPGmailAccountService {
 
-	@Value("${spring.mail.port}")
-	private String springMailPort;
-	
 	@Value("${spring.mail.username}")
 	private String springMailUsername;
 
-	@Value("${spring.mail.password}")
-	private String springMailPassword;
-
-
 	@Autowired
 	private JavaMailSender mailSender;
-	private RestoreByMailRepository restoreByMailRepository; 
 
 	public void sendOTPEmail(String toEmail, String subject, String body) {
 		SimpleMailMessage message = new SimpleMailMessage();
@@ -36,6 +25,7 @@ public class SendOTPGmailRestoreAccountService {
 		message.setSubject(subject);
 		mailSender.send(message);
 	}
-
-
 }
+
+
+

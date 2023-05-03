@@ -41,7 +41,10 @@ public class ProductService implements ProductServiceInterface {
 		updateProd.setImage_url(product.getImage_url());
 		updateProd.setSize(product.getSize());
 		updateProd.setType_id(product.getType_id());
+		updateProd.setCreated_at(product.getCreated_at());
+		updateProd.setCreated_by(product.getCreated_by());
 		return productRepository.save(updateProd);
+		
 	}
 
 	@Override

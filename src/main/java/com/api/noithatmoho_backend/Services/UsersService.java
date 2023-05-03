@@ -28,8 +28,6 @@ public class UsersService implements UsersServiceInterface{
 	public List<UsersModel> getAllUsers() {
 		return userRepository.findAll();
 	}
-	
-	
 
 
 	@Override
@@ -56,6 +54,5 @@ public class UsersService implements UsersServiceInterface{
 	public void deleteUser(int id) {
 		userRepository.deleteById(id);
 	}
-
 
 }

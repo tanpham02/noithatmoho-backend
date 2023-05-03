@@ -19,13 +19,15 @@ public class ProductModel {
 	private String image_url;
 	private String size;
 	private int type_id;
+	private String created_at;
+	private String created_by;
 
 	public ProductModel() {
 
 	}
 
 	public ProductModel(String name, String discount, float prices, int quantity_sold, int quantity_stock,
-			String image_url, String size, int type_id) {
+			String image_url, String size, int type_id, String created_at, String created_by) {
 		super();
 		this.name = name;
 		this.discount = discount;
@@ -35,13 +37,15 @@ public class ProductModel {
 		this.image_url = image_url;
 		this.size = size;
 		this.type_id = type_id;
+		this.created_at = created_at;
+		this.created_by = created_by;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void SetId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -108,4 +112,24 @@ public class ProductModel {
 	public void setType_id(int type_id) {
 		this.type_id = type_id;
 	}
+
+	public String getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(String created_at) {
+		this.created_at = created_at;
+	}
+
+	public String getCreated_by() {
+		return created_by;
+	}
+
+	public void setCreated_by(String created_by) {
+		this.created_by = created_by;
+	}
+
+	
+
+	
 }

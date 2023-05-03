@@ -1,5 +1,6 @@
 package com.api.noithatmoho_backend.Controller;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +20,34 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api")
-public class SendOTPRegisterbyPhoneController {
+public class SendOTPRestorebyPhoneController {
 	@Autowired
 	private TwilioService twilioService;
 
 	@Autowired
 	private UsersService usersService;
 
-	@PostMapping("/send-otp-sms")
-	public String sendSms(@RequestBody String phone_number, UsersModel usersModel)
+	@Autowired
+	private UsersRepository usersRepository;
+
+	@PostMapping("/send-otp-sms-reset")
+	public String  sendSms(@RequestBody String userInfo, UsersModel usersModel)
 			throws JsonMappingException, JsonProcessingException {
-		String parseJson = phone_number;
+		String parseJson = userInfo;
 		ObjectMapper objectMapper = new ObjectMapper();
 		String stringPhoneNumber = objectMapper.readTree(parseJson).get("phone_number").asText();
+		int id = objectMapper.readTree(parseJson).get("id").asInt();
 
 		String otp = String.format("%06d", new Random().nextInt(999999));
 		twilioService.sendSms(stringPhoneNumber,
-				"OTP xác thực tài khoản của bạn là " + otp + ". Vui lòng không chia sẻ mã này cho bất kì ai!");
+				"OTP khôi phục tài khoản của bạn là " + otp + ". Vui lòng không chia sẻ mã này cho bất kì ai!");
+	
+		Optional<UsersModel> findId = usersRepository.findById(id);
+		UsersModel user = findId.get();
 
-		usersModel.setPhone_number("0" + stringPhoneNumber.substring(3));
-		usersModel.setOtp(otp);
-		usersService.createUser(usersModel);
+		user.setOtp(otp);
+		usersRepository.save(user);
 
-		return stringPhoneNumber;
+		return stringPhoneNumber;	
 	}
 }
-
-
-

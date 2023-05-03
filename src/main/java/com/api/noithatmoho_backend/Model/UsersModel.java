@@ -25,15 +25,15 @@ public class UsersModel {
 	private String product_boughts;
 	private String total_order;
 	private String transactions;
+
 	
 	public UsersModel() {
-		super();
+
 	}
 
 	public UsersModel(String email, String phone_number, String full_name, String password, int is_admin,
 			String birthday, String address, String otp, String vouchers, String checkout, String avatar,
 			String product_boughts, String total_order, String transactions) {
-		super();
 		this.email = email;
 		this.phone_number = phone_number;
 		this.full_name = full_name;
@@ -48,8 +48,8 @@ public class UsersModel {
 		this.product_boughts = product_boughts;
 		this.total_order = total_order;
 		this.transactions = transactions;
-	}
 
+	}
 
 	public int getId() {
 		return id;
@@ -170,10 +170,5 @@ public class UsersModel {
 	public void setTransactions(String transactions) {
 		this.transactions = transactions;
 	}
-
-	
-	
-
-	
 
 }
