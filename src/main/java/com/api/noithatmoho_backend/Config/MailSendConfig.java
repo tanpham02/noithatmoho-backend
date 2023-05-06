@@ -1,4 +1,4 @@
-package com.api.noithatmoho_backend.CorsConfig;
+package com.api.noithatmoho_backend.Config;
 
 
 import org.springframework.beans.factory.annotation.Value;

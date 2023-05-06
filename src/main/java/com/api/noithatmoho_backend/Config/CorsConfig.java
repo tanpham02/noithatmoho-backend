@@ -1,4 +1,4 @@
-package com.api.noithatmoho_backend.CorsConfig;
+package com.api.noithatmoho_backend.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class CorsConfig {
 	         @Override
 	         public void addCorsMappings(CorsRegistry registry) {
 	            registry.addMapping("/**")
-	               .allowedOrigins("https://noithatmoho.vercel.app")
+	               .allowedOrigins("http://localhost:3000")
 	               .allowedMethods("GET", "POST", "PUT", "DELETE")
 	               .allowCredentials(true);
 	         }
