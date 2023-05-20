@@ -1,3 +1,3 @@
 # noithatmoho-backend 
-# Using railway, the backend URL has expired
+# Using railway, backend URL has expired (500 hours trial every month)
 # Document: https://docs.railway.app/reference/plans#starter-plan
