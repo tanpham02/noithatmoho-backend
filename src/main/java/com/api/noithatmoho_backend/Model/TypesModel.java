@@ -34,6 +34,7 @@ public class TypesModel {
 		this.updated_by = updated_by;
 		this.group_type_id = group_type_id;
 	}
+	
 
 	public int getId() {
 		return id;
