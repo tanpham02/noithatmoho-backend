@@ -61,7 +61,7 @@ public class UsersController {
 				+ "      Chúc mừng quý khách hàng đã kích hoạt tài khoản khách hàng thành công. Lần\r\n"
 				+ "      mua hàng tiếp theo, hãy đăng nhập để tích lũy điểm nhận ưu đãi và việc\r\n"
 				+ "      thanh toán sẽ thuận tiện hơn.\r\n" + "    </span>\r\n" + "\r\n" + "    <a\r\n"
-				+ "      href=\"https://noithatmoho.vercel.app\"\r\n" + "      style=\"\r\n" + "        font-size: 15px;\r\n"
+				+ "      href=\"https://moho.vercel.app\"\r\n" + "      style=\"\r\n" + "        font-size: 15px;\r\n"
 				+ "        color: white;\r\n" + "        background: #1666a2;\r\n"
 				+ "        text-decoration: none;\r\n" + "        display: inline-block;\r\n"
 				+ "        height: 52px;\r\n" + "        padding: 0 20px;\r\n" + "        line-height: 52px;\r\n"
