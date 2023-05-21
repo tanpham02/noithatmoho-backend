@@ -1,10 +1,13 @@
 package com.api.noithatmoho_backend.Controller;
 
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -88,23 +91,50 @@ public class UsersController {
 	}
 
 	@GetMapping
-	public List<UsersModel> getAllUsers() {
-		return userService.getAllUsers();
+	public ResponseEntity<List<UsersModel>> getAllUsers() {
+	    try {
+	        List<UsersModel> users = userService.getAllUsers();
+	        if (users == null) {
+	            throw new Exception("No users found");
+	        }
+	        return ResponseEntity.ok(users);
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	    }
 	}
 
 	@GetMapping("/{id}")
-	public Optional<UsersModel> getUserById(@PathVariable int id) {
-		return userService.getUserById(id);
+	public ResponseEntity<UsersModel> getUserById(@PathVariable int id) {
+	    try {
+	        Optional<UsersModel> user = userService.getUserById(id);
+	        if (user.isPresent()) {
+	            return ResponseEntity.ok(user.get());
+	        } else {
+	            throw new Exception("User not found");
+	        }
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	    }
 	}
 
 	@PutMapping("/{id}")
-	public UsersModel updateUser(@PathVariable int id, @RequestBody UsersModel user) {
-		return userService.updateUser(id, user);
+	public ResponseEntity<UsersModel> updateUser(@PathVariable int id, @RequestBody UsersModel user) {
+	    try {
+	        UsersModel updatedUser = userService.updateUser(id, user);
+	        return ResponseEntity.ok(updatedUser);
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	    }
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteUser(@PathVariable int id) {
-		userService.deleteUser(id);
+	public ResponseEntity<Void> deleteUser(@PathVariable int id) {
+	    try {
+	        userService.deleteUser(id);
+	        return ResponseEntity.noContent().build();
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+	    }
 	}
 
 }
