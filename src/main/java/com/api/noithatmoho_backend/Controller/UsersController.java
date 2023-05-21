@@ -91,50 +91,23 @@ public class UsersController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<UsersModel>> getAllUsers() {
-	    try {
-	        List<UsersModel> users = userService.getAllUsers();
-	        if (users == null) {
-	            throw new Exception("No users found");
-	        }
-	        return ResponseEntity.ok(users);
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-	    }
+	public List<UsersModel> getAllUsers() {
+		return userService.getAllUsers();
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<UsersModel> getUserById(@PathVariable int id) {
-	    try {
-	        Optional<UsersModel> user = userService.getUserById(id);
-	        if (user.isPresent()) {
-	            return ResponseEntity.ok(user.get());
-	        } else {
-	            throw new Exception("User not found");
-	        }
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-	    }
+	public Optional<UsersModel> getUserById(@PathVariable int id) {
+		return userService.getUserById(id);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<UsersModel> updateUser(@PathVariable int id, @RequestBody UsersModel user) {
-	    try {
-	        UsersModel updatedUser = userService.updateUser(id, user);
-	        return ResponseEntity.ok(updatedUser);
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-	    }
+	public UsersModel updateUser(@PathVariable int id, @RequestBody UsersModel user) {
+		return userService.updateUser(id, user);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable int id) {
-	    try {
-	        userService.deleteUser(id);
-	        return ResponseEntity.noContent().build();
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-	    }
+	public void deleteUser(@PathVariable int id) {
+		userService.deleteUser(id);
 	}
 
 }
