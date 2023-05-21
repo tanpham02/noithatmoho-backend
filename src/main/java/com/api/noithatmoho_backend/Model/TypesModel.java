@@ -99,4 +99,6 @@ public class TypesModel {
 	public void setGroup_type_id(int group_type_id) {
 		this.group_type_id = group_type_id;
 	}
+	
+	
 }
